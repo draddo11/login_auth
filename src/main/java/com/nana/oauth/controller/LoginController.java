@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.security.RolesAllowed;
+import java.security.Principal;
 
 @RestController
 public class LoginController {
@@ -23,8 +24,8 @@ public class LoginController {
     }
 
     @RequestMapping("/*")
-    public String getGithub()
+    public String getGithub(Principal user)
     {
-        return "Welcome Github user!";
+        return "Welcome Github user!" +  user.getName();
     }
 }
