@@ -21,9 +21,9 @@ public class LoginController {
     {
         return "Welcome Admin";
     }
-    @RequestMapping("/*")
-    public String getGithub()
-    {
-        return "Welcome Github user!";
-    }
+//    @RequestMapping("/*")
+//    public String getGithub()
+//    {
+//        return "Welcome Github user!";
+//    }
 }
