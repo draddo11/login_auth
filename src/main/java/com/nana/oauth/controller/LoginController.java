@@ -9,7 +9,7 @@ import javax.annotation.security.RolesAllowed;
 @RestController
 public class LoginController {
     @RolesAllowed("USER")
-    @RequestMapping("/*")
+    @RequestMapping("/**")
     public String getUser()
     {
         return "Welcome User";
@@ -21,6 +21,7 @@ public class LoginController {
     {
         return "Welcome Admin";
     }
+
     @RequestMapping("/*")
     public String getGithub()
     {
