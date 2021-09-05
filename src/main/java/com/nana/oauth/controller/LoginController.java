@@ -1,6 +1,10 @@
 package com.nana.oauth.controller;
 
 
+import org.apache.catalina.User;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +14,12 @@ import java.security.Principal;
 
 @RestController
 public class LoginController {
+
+    private final OAuth2AuthorizedClientService authorizedClientService;
+
+    public LoginController(OAuth2AuthorizedClientService authorizedClientService) {
+        this.authorizedClientService = authorizedClientService;
+    }
     @RolesAllowed("USER")
     @RequestMapping("/**")
     public String getUser()
