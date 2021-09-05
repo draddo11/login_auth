@@ -26,6 +26,8 @@ public class LoginController {
     @RequestMapping("/*")
     public String getUserInfo(Principal user)
     {
-        return  user.toString();
+        StringBuffer userInfo= new StringBuffer;
+
+        return  userInfo.toString();
     }
 }
