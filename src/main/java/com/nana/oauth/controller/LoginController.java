@@ -1,6 +1,7 @@
 package com.nana.oauth.controller;
 
 
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,27 @@ public class LoginController {
     {
         StringBuffer userInfo= new StringBuffer;
 
-        return  userInfo.toString();
+        UsernamePasswordAuthenticationToken token = ((UsernamePasswordAuthenticationToken) user);
+        if(token.isAuthenticated()){
+            User u = (User) token.getPrincipal();
+            usernameInfo.append("Welcome, " + u.getUsername());
+        }
+        else{
+            usernameInfo.append("NA");
+        }
+        return usernameInfo;
     }
+    private StringBuffer getOauth2LoginInfo(Principal user){
+
+        StringBuffer protectedInfo = new StringBuffer();
+
+        OAuth2AuthenticationToken authToken = ((OAuth2AuthenticationToken) user);
+
+        OAuth2AuthorizedClient authClient = this.authorizedClientService.loadAuthorizedClient(authToken.getAuthorizedClientRegistrationId(), authToken.getName());
+
+        return protectedInfo;
+
+    }
+
+
 }
