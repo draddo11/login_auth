@@ -37,24 +37,34 @@ public class LoginController {
     }
 
     @RequestMapping("/*")
-    public String getUserInfo(Principal user)
-    {
-        StringBuffer userInfo= new StringBuffer();
+    public String getUserInfo(Principal user) {
 
-        UsernamePasswordAuthenticationToken token = ((UsernamePasswordAuthenticationToken) user);
-        if(token.isAuthenticated()){
-            User u = (User) token.getPrincipal();
-            usernameInfo.append("Welcome, " + u.getUsername());
+        StringBuffer userInfo= new StringBuffer;
+
+        if(user instanceof UsernamePasswordAuthenticationToken){
+            userInfo.append(getUsernamePasswordLoginInfo(user));
         }
-        else{
-            usernameInfo.append("NA");
+        else if(user instanceof OAuth2AuthenticationToken){
+            userInfo.append(getOauth2LoginInfo(user));
         }
-        return usernameInfo;
+        return userInfo.toString();
     }
+//    public String getUserInfo(Principal user)
+//    {
+//        StringBuffer userInfo= new StringBuffer();
+//
+//        UsernamePasswordAuthenticationToken token = ((UsernamePasswordAuthenticationToken) user);
+//        if(token.isAuthenticated()){
+//            User u = (User) token.getPrincipal();
+//            usernameInfo.append("Welcome, " + u.getUsername());
+//        }
+//        else{
+//            usernameInfo.append("NA");
+//        }
+//        return usernameInfo;
+//    }
     private StringBuffer getOauth2LoginInfo(Principal user){
-
         StringBuffer protectedInfo = new StringBuffer();
-
         OAuth2AuthenticationToken authToken = ((OAuth2AuthenticationToken) user);
         OAuth2AuthorizedClient authClient = this.authorizedClientService.loadAuthorizedClient(authToken.getAuthorizedClientRegistrationId(), authToken.getName());
         if(authToken.isAuthenticated()){
