@@ -39,7 +39,7 @@ public class LoginController {
     @RequestMapping("/*")
     public String getUserInfo(Principal user) {
 
-        StringBuffer userInfo= new StringBuffer;
+        StringBuffer userInfo= new StringBuffer();
 
         if(user instanceof UsernamePasswordAuthenticationToken){
             userInfo.append(getUsernamePasswordLoginInfo(user));
