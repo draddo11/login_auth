@@ -49,6 +49,21 @@ public class LoginController {
         }
         return userInfo.toString();
     }
+
+    private StringBuffer getUsernamePasswordLoginInfo(Principal user)
+    {
+        StringBuffer usernameInfo = new StringBuffer();
+
+        UsernamePasswordAuthenticationToken token = ((UsernamePasswordAuthenticationToken) user);
+        if(token.isAuthenticated()){
+            User u = (User) token.getPrincipal();
+            usernameInfo.append("Welcome, " + u.getUsername());
+        }
+        else{
+            usernameInfo.append("NA");
+        }
+        return usernameInfo;
+    }
 //    public String getUserInfo(Principal user)
 //    {
 //        StringBuffer userInfo= new StringBuffer();
