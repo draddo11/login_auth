@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.nana.oauth.controller.LoginController;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -17,7 +19,8 @@ class OauthApplicationTests {
     private LoginController controller;
 
     @Test
-   public void contextLoads() {
+    void contextLoads()throws Exception {
+        assertThat(controller).isNotNull();
     }
 
 }
