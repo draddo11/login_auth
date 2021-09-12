@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.nana.oauth.controller.LoginController;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 @ExtendWith(SpringExtension.class)
@@ -12,7 +13,7 @@ import com.nana.oauth.controller.LoginController;
 class OauthApplicationTests {
 
     @Test
-    void contextLoads() {
+   public void contextLoads() {
     }
 
 }
