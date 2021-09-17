@@ -9,7 +9,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        git  registry.addMapping("/**")
+          registry.addMapping("/**")
                 .allowedOrigins("https://cheezburger.com")
                 .allowedMethods("GET", "POST")
                 .allowCredentials(false).maxAge(3600);;
