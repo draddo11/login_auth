@@ -7,4 +7,7 @@ import org.springframework.context.annotation.Configuration;
 public class LoginAuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Value("${security.jwt.client-id}")
     private String clientId;
+
+    @Value("${security.jwt.client-secret}")
+    private String clientSecret;
 }
