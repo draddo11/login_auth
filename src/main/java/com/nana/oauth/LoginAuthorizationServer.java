@@ -11,6 +11,6 @@ import org.springframework.context.annotation.Configuration;
 //
 //    @Value("${security.jwt.client-secret}")
 //    private String clientSecret;
-@Autowired
-private AuthenticationManager authenticationManager;
+//@Autowired
+//private AuthenticationManager authenticationManager;
 //}
